@@ -7,15 +7,71 @@ body{
 }
 .Calculator{
 
-    width:40%;
+    width:30%;
     height:80%;
     background-color: gray;
     display: flex;
     flex-direction: column;
+
     gap: 20px;
+    padding:10px;
 }
 
 #container{
     height: 10%;
     background-color: white;
+}
+
+#containers{
+    height:80%;
+    background-color:white;
+}
+
+.Output{
+    font-size: 60px;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    padding-right:5px;
+}
+
+#buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height:20%;
+    background-color:red;
+}
+#left-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33.3%;
+    background-color:red;
+}
+#addition_button{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:40%;
+    width: 100%;
+    background-color:red;
+}
+.left{
+    width:75%;
+    background-color:white;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.right{
+    display:flex;
+    flex-direction: column;
+    width:25%;
+    background-color: blue;
+}
+
+.buttons{
+    display:flex;
 }
