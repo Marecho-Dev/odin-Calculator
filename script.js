@@ -1,52 +1,44 @@
 let operator = "";
-let currentValue = [];
 let display = "";
+let previousValue = "";
+let currentValue = "";
 let decimalCounter = 0;
+let operatorCounter = 0;
 
 function operate(operator,x,y){
 
 }
 
-
-function changeDisplay(x,buttonType){
-    const output = document.querySelector('.Output');
-    if((decimalCounter == 0 || x!=".") && buttonType=="number"){
-        if(display != ""){
-            console.log(display);
-            display = display+x;
+function stringBuilder(x,buttonType){
+    if (x=="."){
+        if (decimalCounter == 0){
+            currentValue = currentValue + x;
+            decimalCounter+=1;
         }
-        else{
-            console.log("'" + display + "'");
-        display = x;
+    }
+    else if (buttonType=="number") currentValue = currentValue + x;
+    else if (buttonType=="operator"){
+        if (operatorCounter == 0){
+            operator = x;
+            previousValue = currentValue;
+            currentValue = "";
+            operatorCounter+=1;
+            decimalCounter=0;
         }
-        if(x=="."){
-            decimalCounter=1;
-        }
-        output.textContent = display;
-        
     }
-    else if(currentValue.length<2){
-        currentValue.push(display);
-        display = display+x;
-        currentValue.push(x);
-        console.log(currentValue);
-        display = "";
-        output.textContent = currentValue[0] + currentValue[1] + display;
-        decimalCounter = 0;
-        
+    else if (buttonType=="equal"){
+        console.log(calculate(operator,previousValue,currentValue));
     }
-    else if(buttonType == "equal"){
-        display=display+x;
-        output.textContent = calculate(currentValue[1],currentValue[0],display);
-        console.log(calculate(currentValue[1],currentValue[0],display));
-
-    }
-
-    
+    changeDisplay();
 }
+
+function changeDisplay(){
+    const output = document.querySelector('.Output');
+    output.textContent = previousValue+operator+currentValue;
+}
+
 function parser(x){
     if (x.search(".") != -1){
-        console.log(x); 
         return parseFloat(x);
     }
     else {
@@ -58,8 +50,6 @@ function calculate(operator,a,b){
     let y = parser(b);
     switch (operator){
         case "*":
-            console.log("calculate "+ x);
-            console.log("calculate "+ y);
             return x*y;
             break;
         case "/":
@@ -75,12 +65,12 @@ function calculate(operator,a,b){
 }
 
 
-
 const buttons = document.querySelectorAll('.number');
 buttons.forEach((button)=>{
     button.addEventListener('click', ()=> {
         changeDisplay(button.textContent,"number");
-        console.log(display);
+        stringBuilder(button.textContent,"number");
+        // console.log(display);
         
     });
 });
@@ -89,7 +79,8 @@ const operators = document.querySelectorAll('.operator');
 operators.forEach((operator)=>{
     operator.addEventListener('click',()=>{
         changeDisplay(operator.textContent,"operator");
-        console.log(operator);
+        stringBuilder(operator.textContent,"operator");
+        // console.log(operator);
     })
 
 })
@@ -97,5 +88,6 @@ operators.forEach((operator)=>{
 const equal = document.querySelector('.equal');
 equal.addEventListener('click',()=>{
     changeDisplay(equal.textContent,"equal");
-    console.log(equal.textContent);
+    stringBuilder(equal.textContent,"equal");
+    // console.log(equal.textContent);
 })
