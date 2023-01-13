@@ -21,7 +21,6 @@ function stringBuilder(x,buttonType){
         currentValue = currentValue + x;
     }
     else if (buttonType=="operator"){
-        console.log("calling part 3");
         if (operatorCounter == 0){
             operator = x;
             previousValue = currentValue;
@@ -57,23 +56,26 @@ function parser(x){
     else {
         return parseInt(x);
     }
-    console.log("end of parsing");
+}
+
+function round(x){
+    return Math.round(x*100)/100
 }
 function calculate(operator,a,b){
     let x = parser(a);
     let y = parser(b);
     switch (operator){
         case "*":
-            return x*y;
+            return round(x*y);
             break;
         case "/":
-            return x/y;
+            return round(x/y);
             break;
         case "-":
-            return x-y;
+            return round(x-y);
             break;
         case "+":
-            return x+y;
+            return round(x+y);
             break;
     }
 }
