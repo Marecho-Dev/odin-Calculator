@@ -16,9 +16,8 @@ function clear(){
     else if(operator != ""){
         operator = operator.substring(0,operator.length-1);
         operatorCounter = 0;
-    }
-    else if(previousValue != ""){
-        previousValue = previousValue.substring(0,previousValue.length-1);
+        currentValue=previousValue;
+        previousValue="";
     }
 }
 function allClear(){
