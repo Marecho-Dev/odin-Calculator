@@ -74,7 +74,12 @@ function stringBuilder(x,buttonType){
 
 function changeDisplay(){
     const output = document.querySelector('.Output');
-    output.textContent = previousValue+operator+currentValue+answer;
+    if (operator == "" && display == "" && previousValue == "" && currentValue == "" && answer == "" && decimalCounter == 0 && operatorCounter == 0){
+        output.textContent = "0.";
+    }
+    else{
+        output.textContent = previousValue+operator+currentValue+answer;
+    }
 }
 
 function parser(x){
@@ -155,5 +160,12 @@ window.addEventListener("keydown", function(e) {
         stringBuilder(equal.textContent, "equal");
     }
     // console.log(display);
+    
+});
+window.addEventListener("keydown", function(e) {
+    if(e.key == "Backspace"){
+        clear();
+        changeDisplay();
+    }
     
 });
