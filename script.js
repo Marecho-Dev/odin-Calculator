@@ -9,6 +9,29 @@ let operatorCounter = 0;
 function operate(operator,x,y){
 
 }
+function clear(){
+    if(currentValue != ""){
+        currentValue = currentValue.substring(0,currentValue.length-1);
+    }
+    else if(operator != ""){
+        operator = operator.substring(0,operator.length-1);
+        operatorCounter = 0;
+    }
+    else if(previousValue != ""){
+        previousValue = previousValue.substring(0,previousValue.length-1);
+    }
+}
+function allClear(){
+    operator = "";
+    display = "";
+    previousValue = "";
+    currentValue ="";
+    answer = "";
+    decimalCounter = 0;
+    operatorCounter = 0;
+    const output = document.querySelector('.Output');
+    output.textContent = "0";
+}
 
 function stringBuilder(x,buttonType){
     if (x=="."){
@@ -22,16 +45,10 @@ function stringBuilder(x,buttonType){
     }
     else if (buttonType=="operator"){
         if (x == "C"){
-            if(currentValue != ""){
-                currentValue = currentValue.substring(0,currentValue.length-1);
-            }
-            else if(operator != ""){
-                operator = operator.substring(0,operator.length-1);
-                operatorCounter = 0;
-            }
-            else if(previousValue != ""){
-                previousValue = previousValue.substring(0,previousValue.length-1);
-            }
+            clear();
+        }
+        else if(x=="AC"){
+            allClear();
         }
         else if (operatorCounter == 0){
             operator = x;
