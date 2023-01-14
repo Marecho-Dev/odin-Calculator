@@ -21,7 +21,19 @@ function stringBuilder(x,buttonType){
         currentValue = currentValue + x;
     }
     else if (buttonType=="operator"){
-        if (operatorCounter == 0){
+        if (x == "C"){
+            if(currentValue != ""){
+                currentValue = currentValue.substring(0,currentValue.length-1);
+            }
+            else if(operator != ""){
+                operator = operator.substring(0,operator.length-1);
+                operatorCounter = 0;
+            }
+            else if(previousValue != ""){
+                previousValue = previousValue.substring(0,previousValue.length-1);
+            }
+        }
+        else if (operatorCounter == 0){
             operator = x;
             previousValue = currentValue;
             currentValue = "";
@@ -123,7 +135,6 @@ equal.addEventListener('click',()=>{
     // console.log(equal.textContent);
 })
 window.addEventListener("keydown", function(e) {
-    console.log(e);
     if(e.key == "=" || e.key == "Enter"){
         stringBuilder(equal.textContent, "equal");
     }
