@@ -37,7 +37,7 @@ function stringBuilder(x,buttonType){
 
         }
     }
-    else if (buttonType=="equal"){
+    else if (buttonType=="equal" && previousValue != "" && currentValue != ""){
         answer = "="+calculate(operator,previousValue,currentValue);
 
     }
@@ -84,8 +84,15 @@ function calculate(operator,a,b){
 const buttons = document.querySelectorAll('.number');
 buttons.forEach((button)=>{
     button.addEventListener('click', ()=> {
-        changeDisplay(button.textContent,"number");
+        // changeDisplay(button.textContent,"number");
         stringBuilder(button.textContent,"number");
+        // console.log(display);
+        
+    });
+    window.addEventListener("keydown", function(e) {
+        if(e.key == button.textContent){
+            stringBuilder(button.textContent, "number");
+        }
         // console.log(display);
         
     });
@@ -94,16 +101,32 @@ buttons.forEach((button)=>{
 const operators = document.querySelectorAll('.operator');
 operators.forEach((operator)=>{
     operator.addEventListener('click',()=>{
-        changeDisplay(operator.textContent,"operator");
+        // changeDisplay(operator.textContent,"operator");
         stringBuilder(operator.textContent,"operator");
         // console.log(operator);
     })
+    window.addEventListener("keydown", function(e) {
+        if(e.key == operator.textContent){
+            stringBuilder(operator.textContent, "operator");
+        }
+        // console.log(display);
+        
+    });
 
 })
+
 
 const equal = document.querySelector('.equal');
 equal.addEventListener('click',()=>{
-    changeDisplay(equal.textContent,"equal");
+    // changeDisplay(equal.textContent,"equal");
     stringBuilder(equal.textContent,"equal");
     // console.log(equal.textContent);
 })
+window.addEventListener("keydown", function(e) {
+    console.log(e);
+    if(e.key == "=" || e.key == "Enter"){
+        stringBuilder(equal.textContent, "equal");
+    }
+    // console.log(display);
+    
+});
