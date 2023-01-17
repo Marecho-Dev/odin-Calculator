@@ -82,7 +82,7 @@ function changeDisplays(){
         equationOutput.textContent = "0";
     }
     else if(answer =="" && operator == ""){
-        // equationOutput.textContent = previousValue+operator+currentValue;
+        equationOutput.textContent = "0";
         output.textContent = currentValue;
     }
     else if(answer ==""){
