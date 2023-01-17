@@ -123,12 +123,20 @@ buttons.forEach((button)=>{
     button.addEventListener('click', ()=> {
         // changeDisplay(button.textContent,"number");
         stringBuilder(button.textContent,"number");
+        button.classList.add('pressed');
+        setTimeout(() => {
+            button.classList.remove('pressed');
+        }, "100")
         // console.log(display);
         
     });
     window.addEventListener("keydown", function(e) {
         if(e.key == button.textContent){
             stringBuilder(button.textContent, "number");
+            button.classList.add('pressed');
+            setTimeout(() => {
+                button.classList.remove('pressed');
+            }, "100")
         }
         // console.log(display);
         
@@ -140,11 +148,20 @@ operators.forEach((operator)=>{
     operator.addEventListener('click',()=>{
         // changeDisplay(operator.textContent,"operator");
         stringBuilder(operator.textContent,"operator");
+        operator.classList.add('pressed');
+        setTimeout(() => {
+            operator.classList.remove('pressed');
+        }, "50")
         // console.log(operator);
     })
     window.addEventListener("keydown", function(e) {
         if(e.key == operator.textContent){
             stringBuilder(operator.textContent, "operator");
+            operator.classList.add('pressed');
+            setTimeout(() => {
+                operator.classList.remove('pressed');
+            }, "50")
+            
         }
         // console.log(display);
         
@@ -162,6 +179,7 @@ equal.addEventListener('click',()=>{
 window.addEventListener("keydown", function(e) {
     if(e.key == "=" || e.key == "Enter"){
         stringBuilder(equal.textContent, "equal");
+        
     }
     // console.log(display);
     
@@ -174,9 +192,5 @@ window.addEventListener("keydown", function(e) {
     
 });
 
-const buttonsDarken = document.querySelectorAll('.buttons');
-buttonsDarken.forEach((button)=>{
-    button.addEventListener('mouseover',()=>{
-        console.log("hi");
-    });
-})
+
+

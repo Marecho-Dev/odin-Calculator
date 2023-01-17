@@ -96,7 +96,7 @@ body{
     background-color:#FFFFFF;
     border-radius: 10px;
     border-style: solid;
-    box-shadow: 1.5px 3px;
+    
 }
 
 #clear{
@@ -108,7 +108,7 @@ body{
     border-radius: 10px;
     border-style: solid;
     background-color:#ffafcc;
-    box-shadow: 1.5px 3px;
+    
 
 }
 
@@ -121,7 +121,7 @@ body{
     background-color:#ffe7ff;
     border-radius: 10px;
     border-style: solid;
-    box-shadow: 1.5px 3px;
+    /* box-shadow: 1.5px 3px; */
 }
 
 
@@ -134,7 +134,6 @@ body{
     background-color:#FFCBE8;
     border-radius: 10px;
     border-style: solid;
-    box-shadow: 1.5px 3px;
 }
 
 .operator:hover{
@@ -148,3 +147,13 @@ body{
 .equal:hover{
     filter: brightness(85%);
 }
+
+.raised{
+    box-shadow: 1.5px 3px;
+}
+.pressed {
+    box-shadow: inset 1.5px 3px gray;
+    transition-property: box-shadow;
+    transition-duration: 2s;
+    transition-delay: 0s;
+  }
