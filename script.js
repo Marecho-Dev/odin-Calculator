@@ -57,6 +57,7 @@ function stringBuilder(x,buttonType){
             decimalCounter=0;
         }
         else{
+            console.log("calling");
             previousValue = calculate(operator,previousValue,currentValue).toString();
             answer = "";
             currentValue = "";
@@ -66,7 +67,7 @@ function stringBuilder(x,buttonType){
         }
     }
     else if (buttonType=="equal" && previousValue != "" && currentValue != ""){
-        answer = "="+calculate(operator,previousValue,currentValue);
+        answer = calculate(operator,previousValue,currentValue);
 
     }
     changeDisplays();
@@ -80,8 +81,17 @@ function changeDisplays(){
         output.textContent = "0";
         equationOutput.textContent = "0";
     }
+    else if(answer =="" && operator == ""){
+        // equationOutput.textContent = previousValue+operator+currentValue;
+        output.textContent = currentValue;
+    }
+    else if(answer ==""){
+        equationOutput.textContent = previousValue+operator;
+        output.textContent = currentValue;
+    }
     else{
-        output.textContent = previousValue+operator+currentValue+answer;
+        equationOutput.textContent = previousValue+operator+currentValue+"=";
+        output.textContent = answer;
     }
 }
 
