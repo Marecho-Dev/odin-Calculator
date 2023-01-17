@@ -14,7 +14,8 @@ body{
     flex-direction: column;
     border-radius: 20px;
     padding:20px;
-    border-style:solid;
+    border-style:solid ;
+    box-shadow: 3px 3px ;
 }
 .logo{
     display: flex;
@@ -35,6 +36,9 @@ body{
     height: 15%;
     background-color: #ECECEC;
     margin-bottom: 10%;
+    display:flex;
+    flex-direction: column;
+    
 }
 
 #containers{
@@ -44,12 +48,27 @@ body{
     justify-content: center;
 }
 
+.equation{
+    height:50%;
+    display:flex;
+    justify-content: end;
+    align-items: flex-end;
+    font-size: 35px;
+}
+.active{
+    height:50%;
+    display:flex;
+    justify-content: end;
+    align-items: flex-end;
+    font-size: 50px;
+}
+
 .Output{
     border-style:solid;
     border-radius: 10px;
-    font-size: 60px;
+    font-size: 30px;
     display: flex;
-    justify-content: end;
+    justify-content:flex-start;
     align-items: flex-end;
     padding-right:5px;
 
@@ -77,6 +96,7 @@ body{
     background-color:#FFFFFF;
     border-radius: 10px;
     border-style: solid;
+    box-shadow: 1.5px 3px;
 }
 
 #clear{
@@ -88,6 +108,7 @@ body{
     border-radius: 10px;
     border-style: solid;
     background-color:#ffafcc;
+    box-shadow: 1.5px 3px;
 
 }
 
@@ -100,6 +121,7 @@ body{
     background-color:#ffe7ff;
     border-radius: 10px;
     border-style: solid;
+    box-shadow: 1.5px 3px;
 }
 
 
@@ -112,4 +134,17 @@ body{
     background-color:#FFCBE8;
     border-radius: 10px;
     border-style: solid;
+    box-shadow: 1.5px 3px;
+}
+
+.operator:hover{
+    filter: brightness(85%);
+}
+
+
+.number:hover{
+    filter: brightness(85%);
+}
+.equal:hover{
+    filter: brightness(85%);
 }

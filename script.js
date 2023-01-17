@@ -28,8 +28,8 @@ function allClear(){
     answer = "";
     decimalCounter = 0;
     operatorCounter = 0;
-    const output = document.querySelector('.Output');
-    output.textContent = "0";
+    changeDisplays();
+    
 }
 
 function stringBuilder(x,buttonType){
@@ -69,13 +69,16 @@ function stringBuilder(x,buttonType){
         answer = "="+calculate(operator,previousValue,currentValue);
 
     }
-    changeDisplay();
+    changeDisplays();
 }
 
-function changeDisplay(){
-    const output = document.querySelector('.Output');
+
+function changeDisplays(){
+    const output = document.querySelector('.active');
+    const equationOutput = document.querySelector('.equation');
     if (operator == "" && display == "" && previousValue == "" && currentValue == "" && answer == "" && decimalCounter == 0 && operatorCounter == 0){
-        output.textContent = "0.";
+        output.textContent = "0";
+        equationOutput.textContent = "0";
     }
     else{
         output.textContent = previousValue+operator+currentValue+answer;
@@ -94,6 +97,7 @@ function parser(x){
 function round(x){
     return Math.round(x*100)/100
 }
+
 function calculate(operator,a,b){
     let x = parser(a);
     let y = parser(b);
@@ -165,7 +169,14 @@ window.addEventListener("keydown", function(e) {
 window.addEventListener("keydown", function(e) {
     if(e.key == "Backspace"){
         clear();
-        changeDisplay();
+        changeDisplays();
     }
     
 });
+
+const buttonsDarken = document.querySelectorAll('.buttons');
+buttonsDarken.forEach((button)=>{
+    button.addEventListener('mouseover',()=>{
+        console.log("hi");
+    });
+})
