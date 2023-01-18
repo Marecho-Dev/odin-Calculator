@@ -126,11 +126,11 @@ function changeDisplays(){
         equationOutput.textContent = "0";
     }
     else if(answer =="" && operator == ""){
-        equationOutput.textContent = "0";
+        equationOutput.textContent = currentValue;
         output.textContent = currentValue;
     }
     else if(answer ==""){
-        equationOutput.textContent = scientificNotater(previousValue)+operator;
+        equationOutput.textContent = scientificNotater(previousValue)+operator+currentValue;
         output.textContent = currentValue;
     }
     else{
