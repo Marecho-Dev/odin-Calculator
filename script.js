@@ -24,8 +24,6 @@ function clear(){
 }
 
 function scientificNotater(x){
-    console.log('calling');
-    console.log(typeof x)
     if(x.toString().search("e") != -1){
          return round(x.toString().split('e')[0])+"e"+x.toString().split('e')[1];
     }
@@ -97,7 +95,7 @@ function stringBuilder(x,buttonType){
             operator = x;
         }
         else{
-            console.log("calling");
+            console.log("calling this part");
             equalCounter = 0;
             previousValue = operate(operator,previousValue,currentValue).toString();
             answer = "";
@@ -132,11 +130,11 @@ function changeDisplays(){
         output.textContent = currentValue;
     }
     else if(answer ==""){
-        equationOutput.textContent = previousValue+operator;
+        equationOutput.textContent = scientificNotater(previousValue)+operator;
         output.textContent = currentValue;
     }
     else{
-        equationOutput.textContent = previousValue+operator+currentValue+"=";
+        equationOutput.textContent = scientificNotater(previousValue)+operator+scientificNotater(currentValue)+"=";
         output.textContent = answer;
     }
 }
