@@ -9,8 +9,10 @@ body{
 }
 .Calculator{
 
-    width:500px;
-    height:700px;
+    width:25%;
+    height:65%;
+    min-width: 200px;
+    min-height: 500px;
     background-color: #cdb4db;
     display: flex;
     flex-direction: column;
@@ -57,14 +59,14 @@ body{
     display:flex;
     justify-content: end;
     align-items: flex-end;
-    font-size: 30px;
+    font-size: 35px;
 }
 .active{
     height:60%;
     display:flex;
     justify-content: end;
     align-items: flex-end;
-    font-size: 50px;
+    font-size: 60px;
 }
 
 .Output{

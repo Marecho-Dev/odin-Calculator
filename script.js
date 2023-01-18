@@ -9,7 +9,7 @@ let equalCounter = 0;
 let errorCounter = 0;
 
 function clear(){
-    if (equalCounter == 1){
+    if (equalCounter == 1 ||errorCounter == 1){
         allClear();
     }
     else if(currentValue != ""){
@@ -42,6 +42,7 @@ function allClear(){
     decimalCounter = 0;
     operatorCounter = 0;
     equalCounter = 0;
+    errorCounter = 0;
     changeDisplays();
     
 }
