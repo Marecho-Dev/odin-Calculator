@@ -22,6 +22,19 @@ function clear(){
         previousValue="";
     }
 }
+
+function scientificNotater(x){
+    console.log('calling');
+    console.log(typeof x)
+    if(x.toString().search("e") != -1){
+         return round(x.toString().split('e')[0])+"e"+x.toString().split('e')[1];
+    }
+    else{
+        return x;
+    }
+
+}
+
 function allClear(){
     operator = "";
     display = "";
@@ -49,13 +62,13 @@ function stringBuilder(x,buttonType){
         allClear();
         stringBuilder(x,buttonType);
     }
-    else if (x=="."){
+    else if (x=="." && currentValue.length < 15){
         if (decimalCounter == 0){
             currentValue = currentValue + x;
             decimalCounter+=1;
         }
     }
-    else if (buttonType=="number") {
+    else if (buttonType=="number" && currentValue.length<14) {
         if (answer == ""){
             currentValue = currentValue + x;
         }
@@ -96,7 +109,7 @@ function stringBuilder(x,buttonType){
     }
     else if (buttonType=="equal" && previousValue != "" && currentValue != ""){
         equalCounter = 1;
-        answer = operate(operator,previousValue,currentValue);
+        answer = scientificNotater(operate(operator,previousValue,currentValue));
 
     }
     changeDisplays();
@@ -149,9 +162,8 @@ function divide(x,y){
         return round(x/y);
     }
 }
+
 function multiply(x,y){
-    console.log(x);
-    console.log(y);
     return round(x*y);
 }
 
@@ -191,7 +203,6 @@ buttons.forEach((button)=>{
         setTimeout(() => {
             button.classList.remove('pressed');
         }, "100")
-        // console.log(display);
         
     });
     window.addEventListener("keydown", function(e) {
@@ -202,7 +213,6 @@ buttons.forEach((button)=>{
                 button.classList.remove('pressed');
             }, "100")
         }
-        // console.log(display);
         
     });
 });
@@ -210,13 +220,11 @@ buttons.forEach((button)=>{
 const operators = document.querySelectorAll('.operator');
 operators.forEach((operator)=>{
     operator.addEventListener('click',()=>{
-        // changeDisplay(operator.textContent,"operator");
         stringBuilder(operator.textContent,"operator");
         operator.classList.add('pressed');
         setTimeout(() => {
             operator.classList.remove('pressed');
         }, "50")
-        // console.log(operator);
     })
     window.addEventListener("keydown", function(e) {
         if(e.key == operator.textContent){
@@ -225,10 +233,7 @@ operators.forEach((operator)=>{
             setTimeout(() => {
                 operator.classList.remove('pressed');
             }, "50")
-            
         }
-        // console.log(display);
-        
     });
 
 })
@@ -236,17 +241,14 @@ operators.forEach((operator)=>{
 
 const equal = document.querySelector('.equal');
 equal.addEventListener('click',()=>{
-    // changeDisplay(equal.textContent,"equal");
     stringBuilder(equal.textContent,"equal");
-    // console.log(equal.textContent);
+
 })
 window.addEventListener("keydown", function(e) {
     if(e.key == "=" || e.key == "Enter"){
         stringBuilder(equal.textContent, "equal");
         
     }
-    // console.log(display);
-    
 });
 window.addEventListener("keydown", function(e) {
     if(e.key == "Backspace"){
