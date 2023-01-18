@@ -17,18 +17,15 @@ body{
     display: flex;
     flex-direction: column;
     border-radius: 20px;
-    padding:20px;
+    padding:1%;
     border-style:solid ;
     box-shadow: 3px 3px ;
-    flex-grow:0;
 }
 .logo{
     display: flex;
     justify-content: end;
     align-items: flex-end;
-    background-color:cdb4db;
-    gap: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 1%;
 }
 .github{
     background-image:url("github-logo.png");
@@ -76,16 +73,16 @@ body{
     display: flex;
     justify-content:flex-start;
     align-items: flex-end;
-    padding-right:5px;
+    padding-right:1%;
 
 }
 
 .buttons{
-    margin-top:20px;
+    margin-top:2.5%;
     display:flex;
     background-color: #ffafcc;
     width: 100%;
-    gap: 5px;
+    gap: 1%;
     flex-wrap:wrap;
 }
 
