@@ -1,15 +1,16 @@
 body{
     height: 100vh;
-    width: 100wh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-basis: 0;
     
 }
 .Calculator{
 
-    width:20%;
-    height:60%;
+    width:500px;
+    height:700px;
     background-color: #cdb4db;
     display: flex;
     flex-direction: column;
@@ -17,6 +18,7 @@ body{
     padding:20px;
     border-style:solid ;
     box-shadow: 3px 3px ;
+    flex-grow:0;
 }
 .logo{
     display: flex;
@@ -47,6 +49,7 @@ body{
     background-color:#cdb4db;
     display:flex;
     justify-content: center;
+
 }
 
 .equation{
@@ -54,14 +57,14 @@ body{
     display:flex;
     justify-content: end;
     align-items: flex-end;
-    font-size: 1vw;
+    font-size: 30px;
 }
 .active{
     height:60%;
     display:flex;
     justify-content: end;
     align-items: flex-end;
-    font-size: 3vw;
+    font-size: 50px;
 }
 
 .Output{
@@ -92,7 +95,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1vw;
+    font-size: 50px;
     width:22%;
     background-color:#FFFFFF;
     border-radius: 10px;
@@ -104,7 +107,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1vw;
+    font-size: 50px;
     width:22%;
     border-radius: 10px;
     border-style: solid;
@@ -117,7 +120,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1vw;
+    font-size: 50px;
     width:22%;
     background-color:#ffe7ff;
     border-radius: 10px;
@@ -130,7 +133,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 35px;
+    font-size: 50px;
     width:22%;
     background-color:#FFCBE8;
     border-radius: 10px;

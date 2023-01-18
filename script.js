@@ -6,10 +6,8 @@ let answer = "";
 let decimalCounter = 0;
 let operatorCounter = 0;
 let equalCounter = 0;
+let errorCounter = 0;
 
-function operate(operator,x,y){
-
-}
 function clear(){
     if (equalCounter == 1){
         allClear();
@@ -46,7 +44,12 @@ function sign(){
 }
 
 function stringBuilder(x,buttonType){
-    if (x=="."){
+    if (errorCounter == 1){
+        errorCounter = 0;
+        allClear();
+        stringBuilder(x,buttonType);
+    }
+    else if (x=="."){
         if (decimalCounter == 0){
             currentValue = currentValue + x;
             decimalCounter+=1;
@@ -83,7 +86,7 @@ function stringBuilder(x,buttonType){
         else{
             console.log("calling");
             equalCounter = 0;
-            previousValue = calculate(operator,previousValue,currentValue).toString();
+            previousValue = operate(operator,previousValue,currentValue).toString();
             answer = "";
             currentValue = "";
             operator = x;
@@ -93,7 +96,7 @@ function stringBuilder(x,buttonType){
     }
     else if (buttonType=="equal" && previousValue != "" && currentValue != ""){
         equalCounter = 1;
-        answer = calculate(operator,previousValue,currentValue);
+        answer = operate(operator,previousValue,currentValue);
 
     }
     changeDisplays();
@@ -103,7 +106,11 @@ function stringBuilder(x,buttonType){
 function changeDisplays(){
     const output = document.querySelector('.active');
     const equationOutput = document.querySelector('.equation');
-    if (operator == "" && display == "" && previousValue == "" && currentValue == "" && answer == "" && decimalCounter == 0 && operatorCounter == 0){
+    if (errorCounter == 1){
+        output.textContent = "Cannot divide by 0";
+        equationOutput.textContent = "0";
+    }
+    else if (operator == "" && display == "" && previousValue == "" && currentValue == "" && answer == "" && decimalCounter == 0 && operatorCounter == 0){
         output.textContent = "0";
         equationOutput.textContent = "0";
     }
@@ -134,21 +141,42 @@ function round(x){
     return Math.round(x*100)/100
 }
 
-function calculate(operator,a,b){
+function divide(x,y){
+    if (y==0){
+        errorCounter = 1;
+    }
+    else{
+        return round(x/y);
+    }
+}
+function multiply(x,y){
+    console.log(x);
+    console.log(y);
+    return round(x*y);
+}
+
+function addition(x,y){
+    return round(x+y);
+}
+
+function subtraction(x,y){
+    return round(x-y);
+}
+function operate(operator,a,b){
     let x = parser(a);
     let y = parser(b);
     switch (operator){
         case "*":
-            return round(x*y);
+            return multiply(x,y);
             break;
         case "/":
-            return round(x/y);
+            return divide(x,y);
             break;
         case "-":
-            return round(x-y);
+            return subtraction(x,y);
             break;
         case "+":
-            return round(x+y);
+            return addition(x,y);
             break;
     }
 }
