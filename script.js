@@ -246,6 +246,10 @@ equal.addEventListener('click',()=>{
 window.addEventListener("keydown", function(e) {
     if(e.key == "=" || e.key == "Enter"){
         stringBuilder(equal.textContent, "equal");
+        equal.classList.add('pressed');
+            setTimeout(() => {
+                equal.classList.remove('pressed');
+            }, "50")
         
     }
 });
