@@ -4,6 +4,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .Calculator{
 
@@ -49,18 +50,18 @@ body{
 }
 
 .equation{
-    height:50%;
+    height:40%;
     display:flex;
     justify-content: end;
     align-items: flex-end;
-    font-size: 35px;
+    font-size: 1vw;
 }
 .active{
-    height:50%;
+    height:60%;
     display:flex;
     justify-content: end;
     align-items: flex-end;
-    font-size: 50px;
+    font-size: 3vw;
 }
 
 .Output{
@@ -91,7 +92,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 35px;
+    font-size: 1vw;
     width:22%;
     background-color:#FFFFFF;
     border-radius: 10px;
@@ -103,7 +104,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 35px;
+    font-size: 1vw;
     width:22%;
     border-radius: 10px;
     border-style: solid;
@@ -116,7 +117,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 35px;
+    font-size: 1vw;
     width:22%;
     background-color:#ffe7ff;
     border-radius: 10px;

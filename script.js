@@ -37,6 +37,14 @@ function allClear(){
     
 }
 
+function percent(){
+    currentValue = (parser(currentValue)/100).toString();
+}
+
+function sign(){
+    currentValue = (parser(currentValue)*-1).toString();
+}
+
 function stringBuilder(x,buttonType){
     if (x=="."){
         if (decimalCounter == 0){
@@ -55,6 +63,12 @@ function stringBuilder(x,buttonType){
         }
         else if(x=="AC"){
             allClear();
+        }
+        else if (x=="%"){
+            percent();
+        }
+        else if (x=="+/-"){
+            sign();
         }
         else if (operatorCounter == 0 && currentValue != ""){
             operator = x;
