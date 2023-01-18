@@ -155,6 +155,7 @@ function round(x){
 function divide(x,y){
     if (y==0){
         errorCounter = 1;
+        return 0;
     }
     else{
         return round(x/y);
