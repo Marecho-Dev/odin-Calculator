@@ -5,12 +5,16 @@ let currentValue = "";
 let answer = "";
 let decimalCounter = 0;
 let operatorCounter = 0;
+let equalCounter = 0;
 
 function operate(operator,x,y){
 
 }
 function clear(){
-    if(currentValue != ""){
+    if (equalCounter == 1){
+        allClear();
+    }
+    else if(currentValue != ""){
         currentValue = currentValue.substring(0,currentValue.length-1);
     }
     else if(operator != ""){
@@ -28,6 +32,7 @@ function allClear(){
     answer = "";
     decimalCounter = 0;
     operatorCounter = 0;
+    equalCounter = 0;
     changeDisplays();
     
 }
@@ -40,7 +45,9 @@ function stringBuilder(x,buttonType){
         }
     }
     else if (buttonType=="number") {
-        currentValue = currentValue + x;
+        if (answer == ""){
+            currentValue = currentValue + x;
+        }
     }
     else if (buttonType=="operator"){
         if (x == "C"){
@@ -49,15 +56,19 @@ function stringBuilder(x,buttonType){
         else if(x=="AC"){
             allClear();
         }
-        else if (operatorCounter == 0){
+        else if (operatorCounter == 0 && currentValue != ""){
             operator = x;
             previousValue = currentValue;
             currentValue = "";
             operatorCounter+=1;
             decimalCounter=0;
         }
+        else if (operatorCounter == 1 && currentValue == ""){
+            operator = x;
+        }
         else{
             console.log("calling");
+            equalCounter = 0;
             previousValue = calculate(operator,previousValue,currentValue).toString();
             answer = "";
             currentValue = "";
@@ -67,6 +78,7 @@ function stringBuilder(x,buttonType){
         }
     }
     else if (buttonType=="equal" && previousValue != "" && currentValue != ""){
+        equalCounter = 1;
         answer = calculate(operator,previousValue,currentValue);
 
     }
